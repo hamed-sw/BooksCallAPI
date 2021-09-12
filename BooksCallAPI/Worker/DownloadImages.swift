@@ -8,7 +8,18 @@
 import Foundation
 
 
-class DownloadImages {
+class DownloadImage {
     
-    
+    static func imageDowloag(string: String, complition: @escaping (Data)->()) {
+        guard let url = URL(string: string) else {return}
+        
+        URLSession.shared.dataTask(with: url) { data, _, error in
+            guard let data = data , error == nil else {
+                return
+            }
+                complition(data)
+            
+        }.resume()
+        
+    }
 }

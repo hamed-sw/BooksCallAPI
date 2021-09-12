@@ -25,4 +25,23 @@ class BookTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    func configer(at viewModel: ViewCellModel){
+        
+        bookNameLabel.text = viewModel.name
+        bookPublisherLabel.text = viewModel.publisher
+        
+        DownloadImage.imageDowloag(string: viewModel.image) { [weak self]  data in
+            DispatchQueue.main.async {
+                let imgae = UIImage(data: data)
+                self?.bookImage.image = imgae
+            }
+        }
+
+       
+        
+        
+    }
+    
+ 
+    
 }
