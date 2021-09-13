@@ -16,7 +16,7 @@ class ViewModel {
         APICalling.bookSerachingAPI(string: st) { [weak self] result in
             switch result {
             case .success(let newData):
-                self?.dataArray = newData.compactMap({ ViewCellModel(name: $0.volumeInfo?.title ?? "", publisher: $0.volumeInfo?.publisher ?? "", image: $0.volumeInfo?.imageLinks?.thumbnail ?? "" )
+                self?.dataArray = newData.compactMap({ ViewCellModel(name: $0.volumeInfo?.title ?? "", publisher: $0.volumeInfo?.publisher ?? "", image: $0.volumeInfo?.imageLinks?.thumbnail ?? "", selection: false )
                 })
                 DispatchQueue.main.async {
                     self?.tableView.reloadData()
