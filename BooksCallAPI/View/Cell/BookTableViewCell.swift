@@ -8,7 +8,7 @@
 import UIKit
 
 class BookTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var bookImage: UIImageView!
     @IBOutlet weak var bookNameLabel: UILabel!
     @IBOutlet weak var bookPublisherLabel: UILabel!
@@ -18,10 +18,10 @@ class BookTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
@@ -36,12 +36,5 @@ class BookTableViewCell: UITableViewCell {
                 self?.bookImage.image = imgae
             }
         }
-
-       
-        
-        
     }
-    
- 
-    
 }

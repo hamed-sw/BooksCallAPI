@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="U7B-NT-gye">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Search Bar Book View Controller-->
+        <!--Search Book-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="SearchBarBookViewController" customModule="BooksCallAPI" customModuleProvider="target" sceneMemberID="viewController">
@@ -17,11 +17,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="ZUu-u4-jnm">
-                                <rect key="frame" x="1" y="44" width="412" height="51"/>
+                                <rect key="frame" x="1" y="88" width="412" height="51"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Lok-sN-jO1">
-                                <rect key="frame" x="1" y="95" width="412" height="767"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Lok-sN-jO1">
+                                <rect key="frame" x="1" y="139" width="412" height="723"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                         </subviews>
@@ -37,14 +37,86 @@
                             <constraint firstItem="Lok-sN-jO1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="1" id="tJz-Wh-L5t"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Search Book" id="RjY-yx-WNY">
+                        <leftBarButtonItems>
+                            <barButtonItem id="xUI-Hy-iBb"/>
+                            <barButtonItem title="select" id="BFa-IV-NrA">
+                                <connections>
+                                    <action selector="selectedTapButton:" destination="BYZ-38-t0r" id="ah3-mF-CN2"/>
+                                </connections>
+                            </barButtonItem>
+                        </leftBarButtonItems>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Favorted" id="1aY-b2-bqx">
+                                <connections>
+                                    <action selector="showFavoriteView:" destination="BYZ-38-t0r" id="sEF-o1-U5F"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="add" id="tHe-sK-9Df">
+                                <connections>
+                                    <action selector="addInToFavoretedButton:" destination="BYZ-38-t0r" id="C73-Lg-dvO"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
                     <connections>
                         <outlet property="searchBar" destination="ZUu-u4-jnm" id="8aq-uq-OTa"/>
+                        <outlet property="selectedItem" destination="BFa-IV-NrA" id="4fk-cH-c4Q"/>
                         <outlet property="tableView" destination="Lok-sN-jO1" id="iiG-75-WP3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="39" y="110"/>
+            <point key="canvasLocation" x="947.82608695652186" y="109.82142857142857"/>
+        </scene>
+        <!--Favorite Book View Controller-->
+        <scene sceneID="1QZ-WK-Cbv">
+            <objects>
+                <viewController storyboardIdentifier="FavoriteBookViewController" id="tfn-S1-859" customClass="FavoriteBookViewController" customModule="BooksCallAPI" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wMg-ta-J67">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="A6C-oW-OFa">
+                                <rect key="frame" x="3" y="44" width="408" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="JSm-ID-w7S"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="JSm-ID-w7S" firstAttribute="bottom" secondItem="A6C-oW-OFa" secondAttribute="bottom" id="Vqh-vR-iOn"/>
+                            <constraint firstItem="JSm-ID-w7S" firstAttribute="trailing" secondItem="A6C-oW-OFa" secondAttribute="trailing" constant="3" id="o7n-a5-OqP"/>
+                            <constraint firstItem="A6C-oW-OFa" firstAttribute="top" secondItem="JSm-ID-w7S" secondAttribute="top" id="tvf-am-IbU"/>
+                            <constraint firstItem="A6C-oW-OFa" firstAttribute="leading" secondItem="JSm-ID-w7S" secondAttribute="leading" constant="3" id="zpv-oo-EqH"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Btw-9y-AkI"/>
+                    <connections>
+                        <outlet property="tableView" destination="A6C-oW-OFa" id="02n-pC-xmK"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7dz-Ad-rL0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1712" y="119"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="IGH-xX-3Hb">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="U7B-NT-gye" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="yxJ-me-jEG">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Iic-7U-pJr"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3J2-dM-S7H" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="37.681159420289859" y="109.82142857142857"/>
         </scene>
     </scenes>
     <resources>
